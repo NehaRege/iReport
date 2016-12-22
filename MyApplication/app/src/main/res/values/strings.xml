@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">iReport</string>
+    <string name="email">Email: </string>
+    <string name="username">Enter email</string>
+    <string name="password">Enter Password</string>
+    <string name="sign_up">Sign-Up</string>
+    <string name="facebook_app_id">216834842093150</string>
+    <string name="fb_login_protocol_scheme">fb216834842093150</string>
+    <string name="location_services_lat">location_services_lat</string>
+    <string name="location_services_long">location_services_long</string>
+    <string name="title_activity_resident__features">Resident_Features</string>
+    <string name="Latitude">Latitude</string>
+    <string name="Status">Status</string>
+    <string name="Longitude">Longitude</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--
+    <string name="app_name">My Application</string>
+-->
+
+</resources>

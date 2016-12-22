@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/reportDesc">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/custom_image"
+            android:src="@drawable/no_image"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+            android:text="Small Text"
+            android:id="@+id/custom_title"
+            android:layout_toLeftOf="@+id/custom_image"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="45dp"
+            android:layout_marginEnd="28dp" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/custom_image"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
+            android:id="@+id/Desc"
+            android:layout_alignTop="@+id/custom_title"
+            android:layout_alignBottom="@+id/custom_image" />
+
+
+    </RelativeLayout>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Some description about the litter"-->
+        <!--android:id="@+id/textView8"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
+</LinearLayout>

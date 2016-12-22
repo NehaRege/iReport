@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_report_littering"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.myapplication.ReportLittering">
+
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:srcCompat="@drawable/cast_abc_scrubber_control_off_mtrl_alpha"-->
+        <!--android:layout_alignTop="@+id/textView10"-->
+        <!--android:layout_toRightOf="@+id/textView10"-->
+        <!--android:layout_toEndOf="@+id/textView10"-->
+        <!--android:layout_marginLeft="91dp"-->
+        <!--android:layout_marginStart="91dp"-->
+        <!--android:id="@+id/imageView2" />-->
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView10"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
+        android:layout_marginLeft="91dp"
+        android:layout_marginStart="91dp"
+        android:src="@drawable/logo"
+        android:id="@+id/imageView2"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/textView14"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:id="@+id/longi" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:layout_alignTop="@+id/textView18"
+        android:layout_alignRight="@+id/longi"
+        android:layout_alignEnd="@+id/longi"
+        android:id="@+id/editText" />
+
+    <TextView
+        android:text="Longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView14"
+        android:layout_alignBaseline="@+id/lat"
+        android:layout_alignBottom="@+id/lat"
+        android:layout_toRightOf="@+id/textView19"
+        android:layout_toEndOf="@+id/textView19" />
+
+
+
+    <TextView
+        android:text="Reporting Thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textView10"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/lat"
+        android:layout_alignEnd="@+id/lat" />
+
+    <TextView
+        android:text="Current Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/textView11"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignLeft="@+id/textView20"
+        android:layout_alignStart="@+id/textView20" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/street"
+        android:layout_alignBaseline="@+id/textView16"
+        android:layout_alignBottom="@+id/textView16"
+        android:layout_alignRight="@+id/imageView2"
+        android:layout_alignEnd="@+id/imageView2" />
+
+    <TextView
+        android:text="Street "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView16"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/lat"
+        android:layout_toLeftOf="@+id/editText"
+        android:layout_toStartOf="@+id/editText" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lat"
+        android:layout_alignBaseline="@+id/textView12"
+        android:layout_alignBottom="@+id/textView12"
+        android:layout_alignLeft="@+id/textView16"
+        android:layout_alignStart="@+id/textView16" />
+
+    <TextView
+        android:text="Size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:id="@+id/textView19"
+        android:layout_below="@+id/editText"
+        android:layout_toRightOf="@+id/lat"
+        android:layout_toEndOf="@+id/lat" />
+
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/textView18"
+        android:layout_below="@+id/textView16"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView20"
+        android:layout_alignStart="@+id/textView20" />
+
+
+    <TextView
+        android:text="Latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/textView11"
+        android:layout_alignRight="@+id/textView18"
+        android:layout_alignEnd="@+id/textView18" />
+
+    <TextView
+        android:text="Severity Level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/severityLevel"
+        android:layout_toLeftOf="@+id/street"
+        android:layout_toStartOf="@+id/street" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation='horizontal'
+        android:layout_marginBottom="25dp"
+        android:id="@+id/severityLevel"
+        android:layout_above="@+id/button4"
+        android:layout_toRightOf="@+id/textView18"
+        android:layout_toEndOf="@+id/textView18">
+    <RadioButton
+        android:text="Urgent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/urgent"
+        android:layout_below="@+id/textView20"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+    <RadioButton
+        android:text="Minor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minor"
+        android:layout_below="@+id/textView20"
+        android:layout_toLeftOf="@+id/medium"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <RadioButton
+        android:text="Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medium"
+        android:layout_below="@+id/textView20"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation='horizontal'
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/textView19"
+        android:layout_alignLeft="@+id/textView12"
+        android:layout_alignStart="@+id/textView12"
+        android:id="@+id/size"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp">
+    <RadioButton
+        android:text="Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/small"
+        android:layout_below="@+id/textView19"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <RadioButton
+        android:text="Extra Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/large"
+        android:layout_toRightOf="@+id/large"
+        android:layout_toEndOf="@+id/large"
+        android:id="@+id/extraLarge" />
+    <RadioButton
+        android:text="Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mediumSize"
+        android:layout_alignBaseline="@+id/small"
+        android:layout_alignBottom="@+id/small"
+        android:layout_toLeftOf="@+id/textView19"
+        android:layout_toStartOf="@+id/textView19" />
+    <RadioButton
+        android:text="Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/large"
+        android:layout_alignBaseline="@+id/mediumSize"
+        android:layout_alignBottom="@+id/mediumSize"
+        android:layout_toRightOf="@+id/mediumSize"
+        android:layout_toEndOf="@+id/mediumSize"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp" />
+    </RadioGroup>
+
+
+</RelativeLayout>

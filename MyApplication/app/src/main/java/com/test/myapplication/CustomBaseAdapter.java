@@ -74,8 +74,9 @@ public class CustomBaseAdapter extends BaseAdapter {
         //if(report.getEmailId().equals(currentUserEmail)) {
 
 
-            viewHolder.textViewTitle.setText(report.getTimeNdate());
-            viewHolder.textViewdesc.setText(report.getDescription());
+            //viewHolder.textViewTitle.setText(report.getTimeNdate());
+            //viewHolder.textViewdesc.setText(report.getDescription());
+        viewHolder.textViewTitle.setText(report.getCurrentstatus());
 
 
 
@@ -98,7 +99,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
             this.imageView = (ImageView) itemLayout.findViewById(R.id.custom_image);
             this.textViewTitle = (TextView) itemLayout.findViewById(R.id.custom_title);
-            this.textViewdesc = (TextView) itemLayout.findViewById(R.id.Desc);
+            //this.textViewdesc = (TextView) itemLayout.findViewById(R.id.Desc);
 
         }
     }

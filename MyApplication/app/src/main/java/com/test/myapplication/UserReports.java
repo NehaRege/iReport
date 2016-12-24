@@ -43,7 +43,7 @@ public class UserReports extends AppCompatActivity {
 
     DatabaseReference mRef;
     DatabaseReference dRef;
-   // DatabaseReference hRef;
+    // DatabaseReference hRef;
 
     String login_email;
     String fb_email;
@@ -97,7 +97,7 @@ public class UserReports extends AppCompatActivity {
 
         } else if(sharedPreferences.getString("login_address",null)!=null) {
             login_email = sharedPreferences.getString("login_address",null);
-                queryRef = mRef.orderByChild("emailId").equalTo(login_email);
+            queryRef = mRef.orderByChild("emailId").equalTo(login_email);
             email = login_email;
         }
 
@@ -119,9 +119,9 @@ public class UserReports extends AppCompatActivity {
                 Loc = value.getLatitude();
 
 
-                 longitude.add(value.getLongitude());
-                 latitude.add(Loc);
-                 street.add(value.getStreet());
+                longitude.add(value.getLongitude());
+                latitude.add(Loc);
+                street.add(value.getStreet());
                 emailid.add(value.getEmailId());
                 description.add(value.getDescription());
                 size.add(value.getSize());
@@ -162,8 +162,6 @@ public class UserReports extends AppCompatActivity {
 
                 Intent intent = new Intent(UserReports.this,OfficialDetail.class);
 
-                Log.i(TAG, "onItemClick: email = "+email);
-
                 if(reportArrayList.get(i).getEmailId().equals(email)) {
                     //intent.putExtra("Date",reportArrayList.)
                     intent.putExtra("email_of", reportArrayList.get(i).getEmailId());
@@ -174,11 +172,11 @@ public class UserReports extends AppCompatActivity {
                     intent.putExtra("descrip_of", reportArrayList.get(i).getDescription());
                     intent.putExtra("street_of", reportArrayList.get(i).getStreet());
                     intent.putExtra("img_of",reportArrayList.get(i).getImg());
+                    intent.putExtra("time",reportArrayList.get(i).getTimeNdate());
+
                     intent.putExtra("Off","User");
                 }
                 startActivity(intent);
-
-
             }
         });
 
@@ -208,7 +206,8 @@ public class UserReports extends AppCompatActivity {
             i.putStringArrayListExtra("Severity", severity);
             i.putStringArrayListExtra("Size", size);
             i.putStringArrayListExtra("Email", emailid);
-            i.putStringArrayListExtra("Image", img);
+            i.putExtra("Off","User");
+            /*i.putStringArrayListExtra("Image", img);*/
             startActivity(i);
             finish();
         }
@@ -217,4 +216,3 @@ public class UserReports extends AppCompatActivity {
     }
 
 }
-

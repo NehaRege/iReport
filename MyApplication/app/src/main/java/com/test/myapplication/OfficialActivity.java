@@ -77,7 +77,7 @@ public class OfficialActivity extends AppCompatActivity {
         dRef = FirebaseDatabase.getInstance().getReference();
 
 
-        mRef = dRef.child("report");                    mRef = dRef.child("report");
+        mRef = dRef.child("report");
         Query qRef;
         qRef = mRef.orderByChild("currentstatus").equalTo("still_there");
 
@@ -155,7 +155,9 @@ public class OfficialActivity extends AppCompatActivity {
                     intent.putExtra("descrip_of", reportArrayList.get(i).getDescription());
                     intent.putExtra("street_of", reportArrayList.get(i).getStreet());
                     intent.putExtra("img_of",reportArrayList.get(i).getImg());
-                    intent.putExtra("Off","Official");
+                    intent.putExtra("time",reportArrayList.get(i).getTimeNdate());
+
+                intent.putExtra("Off","Official");
 
                 startActivity(intent);
 
@@ -190,7 +192,7 @@ public class OfficialActivity extends AppCompatActivity {
             i.putStringArrayListExtra("Severity", severity);
             i.putStringArrayListExtra("Size", size);
             i.putStringArrayListExtra("Email", emailid);
-            i.putStringArrayListExtra("Image", img);
+            i.putExtra("Off","Official");
             startActivity(i);
             finish();
         }

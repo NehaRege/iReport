@@ -51,6 +51,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public String longiReport;
     public String streetReport;
     public String repClicked;
+    String who;
 
     private GoogleMap Mmap;
     DatabaseReference mRef;
@@ -87,23 +88,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap map) {
-
+        Log.i(TAG,"Map loop");
         Intent intent = getIntent();
-        String markerimage;
+        String descr;
         Lat = intent.getStringArrayListExtra("latlist");
         Lng = intent.getStringArrayListExtra("longlist");
         Street = intent.getStringArrayListExtra("Street");
-        img = intent.getStringArrayListExtra("Image");
+        /*img = intent.getStringArrayListExtra("Image");*/
         description = intent.getStringArrayListExtra("Desc");
         emailid = intent.getStringArrayListExtra("Email");
         severity = intent.getStringArrayListExtra("Severity");
         size = intent.getStringArrayListExtra("Size");
+        who = intent.getStringExtra("Off");
 
         for (i = 0; i < Lat.size(); i++) {
             latReport = Lat.get(i);
             longiReport = Lng.get(i);
             streetReport = Street.get(i);
-
+            Log.i(TAG,"Map loop");
             double number = Double.parseDouble(latReport);
             double number2 = Double.parseDouble(longiReport);
 
@@ -112,8 +114,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .title(streetReport));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(number, number2), 15));
             Mmap = map;
-            String cimage = img.get(i);
-            Imagemap.put(marker,cimage);
+            descr = description.get(i);
+            Imagemap.put(marker,descr);
         }
         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -121,7 +123,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 String markerimage = Imagemap.get(marker);
                 Intent intentnew = new Intent(getApplicationContext(), OfficialDetail.class);
                 for (int iter = 0; iter < Lat.size(); iter++) {
-                    if (markerimage.equals(img.get(iter)))
+                    if (markerimage.equals(description.get(iter)))
                     {
                         Data = Street.get(iter);
                         intentnew.putExtra("street_of", Data);
@@ -129,15 +131,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         intentnew.putExtra("lat_of", Data);
                         Data = Lng.get(iter);
                         intentnew.putExtra("long_of", Data);
-                        Data = description.get(iter);
+                        Data = Lat.get(iter);
                         intentnew.putExtra("lat_of", Data);
                         Data = size.get(iter);
                         intentnew.putExtra("size_of", Data);
                         Data = severity.get(iter);
                         intentnew.putExtra("severity_of", Data);
-                        Data = img.get(iter);
-                        intentnew.putExtra("img_of", Data);
-                        intentnew.putExtra("Off","User");
+                        Data = description.get(iter);
+                        intentnew.putExtra("descrip_of", Data);
+                        Data = emailid.get(iter);
+                        intentnew.putExtra("email_of", Data);
+                        intentnew.putExtra("Off", who);
+                        // Data = img.get(iter);
+                        intentnew.putExtra("img_of", "NoImage");
                         break;
                     }
                 }
@@ -147,3 +153,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 }
+

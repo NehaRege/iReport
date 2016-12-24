@@ -16,8 +16,12 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.List;
 
@@ -50,6 +54,10 @@ public class Resident_features_settings extends AppCompatActivity {
     String lastname;
     String address;
     String emailPref;
+    String email;
+    User value;
+    int flagCreate = 0;
+    Query qRef;
 
     Button update;
     //FirebaseDatabase database;
@@ -57,6 +65,8 @@ public class Resident_features_settings extends AppCompatActivity {
     private DatabaseReference userDatabase;
 
     boolean checked;
+
+    int userListSize;
 
 
 
@@ -68,7 +78,10 @@ public class Resident_features_settings extends AppCompatActivity {
         // database = FirebaseDatabase.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         userDatabase = mDatabase.child("user");
+
+
 
         FirebaseUser user= firebaseAuth.getCurrentUser();
 
@@ -95,39 +108,159 @@ public class Resident_features_settings extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+        userListSize = sharedPreferences.getInt("list_user_size",0);
+
+        Log.i(TAG, "onCreate: user list size = "+userListSize);
+
 
         Log.i(TAG, "onCreate: description = "+sharedPreferences.getString("description",null));
 
         if(sharedPreferences.getString("gmail_address",null)!=null) {
             gmail = sharedPreferences.getString("gmail_address",null);
+            Log.i(TAG, "onCreate: gmail ID = "+gmail);
             editTextScreenName.setText("");
-
-
+            email = gmail;
             editTextScreenName.setText(gmail);
 
 
-        } else if(sharedPreferences.getString("fb_address",null)!=null) {
+        }
+        if(sharedPreferences.getString("fb_address",null)!=null) {
             fb_email = sharedPreferences.getString("fb_address",null);
+            Log.i(TAG, "onCreate: fb ID = "+fb_email);
+
             editTextScreenName.setText("");
 
             editTextScreenName.setText(fb_email);
+            email  = fb_email;
 
 
-        } else if(sharedPreferences.getString("login_address",null)!=null) {
+        }
+        if(sharedPreferences.getString("login_address",null)!=null) {
             DatabaseReference myRef;
             login_email = sharedPreferences.getString("login_address",null);
             editTextScreenName.setText("");
+            Log.i(TAG, "onCreate: login ID = "+ login_email);
 
             editTextScreenName.setText(login_email);
+            email = login_email;
 
             // myRef= database.getReference("users").child("email");
             //myRef.setValue(login_email);
 
         }
+        qRef = userDatabase.orderByChild("useremail").equalTo(email);
+
+        qRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                value = dataSnapshot.getValue(User.class);
+                editTextHomeaddress.setText(value.getAddress());
+                editTextFirstName.setText(value.getFirstname());
+                editTextLastName.setText(value.getLastname());
+
+                Log.i(TAG, "email is here"+value.getUseremail());
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+       /* for (int i = 0; i < userListSize; i++) {
+
+            userDatabase.addChildEventListener(new ChildEventListener() {
+
+                //Log.e()
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                    Log.i(TAG, "hey hey hey");
+
+                    value = dataSnapshot.getValue(User.class);
+
+                    Log.i(TAG, "onChildAdded: value email = " + value.getUseremail());
+
+
+                    if (value.getUseremail() == email) {
+
+                        Log.i(TAG, "bey bey bey");
+                        flagCreate = 1;
+                        // break;
+                    }
+
+
+                    Log.i(TAG, "onChildAdded1: " + value.getUseremail());
+
+
+//                userArrayList.add(value);
+
+
+                    //customBaseAdapter.notifyDataSetChanged();
+
+                }
+
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Log.i(TAG, "onChildAdded2: " + value.getUseremail());
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                    Log.i(TAG, "onChildAdded3: " + value.getUseremail());
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                    Log.i(TAG, "onChildAdded: " + value.getUseremail());
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.i(TAG, "onChildAdded4: " + value.getUseremail());
+
+                }
+            });
+        }
+
+
+        if (flagCreate == 0)
+        {
+            // Log.i(TAG, "onUsernewCreate: "+value.getUseremail());
+
+            User user1 = new User("","",email,"","","");
+
+            userDatabase.push().setValue(user1);
+        }
 
 
 
-        update.setOnClickListener(new View.OnClickListener() {
+
+
+*/
+            update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                // DatabaseReference myRef;
@@ -154,7 +287,6 @@ public class Resident_features_settings extends AppCompatActivity {
                 }
 
 //                User user1 = new User(firstname,lastname,editTextScreenName.getText().toString(),address,email_confirmation.getText().toString(),email_notification.getText().toString());
-
 //                email_confirmation.getText().toString()
 
                 Log.i(TAG, "onClick: first Name = "+firstname);
@@ -175,6 +307,8 @@ public class Resident_features_settings extends AppCompatActivity {
 //                myRef.setValue(address);
 
 //                myRef.child("users").push({"firstName": firstname, "lastName": lastname , "homeAddress": address});
+
+                finish();
             }
         });
     }

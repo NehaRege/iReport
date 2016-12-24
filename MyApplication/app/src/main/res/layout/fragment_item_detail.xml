@@ -166,7 +166,8 @@
         android:id="@+id/textView13"
         android:layout_below="@+id/item_detail"
         android:layout_alignLeft="@+id/item_detail"
-        android:layout_alignStart="@+id/item_detail" />
+        android:layout_alignStart="@+id/item_detail"
+        />
 
     <RadioButton
         android:text="Removal Confirmed"
@@ -176,8 +177,9 @@
         android:layout_alignLeft="@+id/radioButton6"
         android:layout_alignStart="@+id/radioButton6"
         android:layout_marginTop="10dp"
-        android:id="@+id/radioButton8"
-        android:onClick="onRemovalConfirm"/>
+        android:id="@+id/radioButtonRemovalConfirmed"
+        />
+    <!--android:onClick="onRemovalConfirm"-->
 
     <RadioButton
         android:text="Removal Claimed"
@@ -187,7 +189,8 @@
         android:id="@+id/radioButton6"
         android:layout_below="@+id/radioButton5"
         android:layout_alignLeft="@+id/radioButton5"
-        android:layout_alignStart="@+id/radioButton5" />
+        android:layout_alignStart="@+id/radioButton5"
+        />
 
     <RadioButton
         android:text="Still there"
@@ -197,15 +200,17 @@
         android:id="@+id/radioButton5"
         android:layout_below="@+id/textView27"
         android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27"/>
+        android:layout_alignStart="@+id/textView27"
+        />
 
     <Button
         android:text="Update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/radioButton8"
+        android:layout_above="@+id/radioButtonRemovalConfirmed"
         android:layout_toLeftOf="@+id/textView17"
         android:layout_toStartOf="@+id/textView17"
-        android:id="@+id/button3" />
+        android:id="@+id/button3"
+        />
 
 </RelativeLayout>

@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.provider.FirebaseInitProvider;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +56,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import static android.content.ContentValues.TAG;
+
 
 public class ReportLittering extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -78,8 +81,11 @@ public class ReportLittering extends AppCompatActivity implements GoogleApiClien
     String login_email;
     String fb_email;
     String gmail;
+    DatabaseReference mRef;
+    DatabaseReference dRef;
+    User value;
 
-    String currentEmail = null;
+    String currentEmail;
 
     private DatabaseReference litterdatabase;
     private DatabaseReference reportDatabase;
@@ -135,24 +141,30 @@ public class ReportLittering extends AppCompatActivity implements GoogleApiClien
         reportDatabase = litterdatabase.child("report");
 //        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        if(sharedPreferences.getString("gmail_address",null)!=null) {
+        if(sharedPreferences.getString("fb_address",null)!=null) {
+            fb_email = sharedPreferences.getString("fb_address", null);
+            email = fb_email;
+            currentEmail = fb_email;
+            Log.i(TAG, "onCreate:b_emai " + currentEmail);
+
+        }
+            if(sharedPreferences.getString("gmail_address",null)!=null) {
             gmail = sharedPreferences.getString("gmail_address",null);
             email = gmail;
             currentEmail = gmail;
+            Log.i(TAG, "onCreate:gmail "+currentEmail);
 
-        } else if(sharedPreferences.getString("fb_address",null)!=null) {
-            fb_email = sharedPreferences.getString("fb_address",null);
-            email =fb_email;
-            currentEmail = fb_email;
+        }
 
-
-        } else if(sharedPreferences.getString("login_address",null)!=null) {
+         else if(sharedPreferences.getString("login_address",null)!=null) {
             DatabaseReference myRef;
             login_email = sharedPreferences.getString("login_address",null);
             email = login_email;
             currentEmail = login_email;
+            Log.i(TAG, "oogin_em "+currentEmail);
 
         }
+        Log.i(TAG, "curr em "+currentEmail);
 
 
       list = new ArrayList<>();
@@ -171,6 +183,61 @@ public class ReportLittering extends AppCompatActivity implements GoogleApiClien
             @Override
             public void onClick(View view) {
 
+                dRef = FirebaseDatabase.getInstance().getReference();
+                mRef = dRef.child("user");
+                Query qRef;
+                qRef = mRef.orderByChild("useremail").equalTo(currentEmail);
+                //qRef = mRef.orderByChild("emailConfirmation").equalTo("no");
+
+                qRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                        value = dataSnapshot.getValue(User.class);
+
+                       // Log.i(TAG, "onChildAddedhihihihi: "+value.getEmailId());
+                        //currentEmail = value.getEmailId();
+                        String checkMail = value.getEmailConfirmation();
+                        Log.i(TAG, "onChildcheck mail: "+checkMail);
+                        if(checkMail == "no")
+                        {
+                            sendEmail();
+                        }
+
+
+                    /*reportArrayList.add(value);
+                    if (value.getDescription()==Desc){
+                        byte[] decodedString = Base64.decode(value.getImg(), Base64.DEFAULT);
+                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                        imgView.setImageBitmap(decodedByte);
+                    }*/
+
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
                 sendEmail();
 
                 Log.i(TAG, "onClick: ");
@@ -188,7 +255,7 @@ public class ReportLittering extends AppCompatActivity implements GoogleApiClien
                 Log.i(TAG, "onClick: street = "+street.getText().toString());
 
 
-                Report report2 = new Report(longi.getText().toString(),lat.getText().toString(),street.getText().toString(),"still_there",radioButtonSeverityLevel.getText().toString(),b64Image,radioButtonSize.getText().toString(),time, editTextDescription.getText().toString(),gmail);
+                Report report2 = new Report(longi.getText().toString(),lat.getText().toString(),street.getText().toString(),"still_there",radioButtonSeverityLevel.getText().toString(),b64Image,radioButtonSize.getText().toString(),time, editTextDescription.getText().toString(),currentEmail);
 
                 reportDatabase.push().setValue(report2);
 

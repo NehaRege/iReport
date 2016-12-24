@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static android.content.ContentValues.TAG;
 
@@ -43,7 +46,10 @@ public class HomePage extends AppCompatActivity {
     String gmail;
     String email;
     User value;
-    ArrayList<User> userArrayList = null;
+    ArrayList<User> userArrayList= new ArrayList<User>();
+
+    ArrayList<Integer> dummyArrayList = new ArrayList<>();
+
 
     Button buttonReport;
     Button buttonMyReports;
@@ -56,95 +62,144 @@ public class HomePage extends AppCompatActivity {
         //setSupportActionBar(myToolbar);
 
         Log.i(TAG, "onCreateSpursh ");
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         userDatabase = mDatabase.child("user");
+
+        for(int i=0;i<10;i++) {
+            dummyArrayList.add(i);
+        }
 
 
 
         Intent intent = getIntent();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor;
 
-
-
-        if(sharedPreferences.getString("gmail_address",null)!=null) {
-            gmail = sharedPreferences.getString("gmail_address",null);
+        if (sharedPreferences.getString("gmail_address", null) != null) {
+            gmail = sharedPreferences.getString("gmail_address", null);
             email = gmail;
 //            editTextScreenName.setText(gmail);
 
 
-        } else if(sharedPreferences.getString("fb_address",null)!=null) {
-            fb_email = sharedPreferences.getString("fb_address",null);
+        }
+        if (sharedPreferences.getString("fb_address", null) != null) {
+            fb_email = sharedPreferences.getString("fb_address", null);
             email = fb_email;
 //            editTextScreenName.setText(fb_email);
 
 
-        } else if(sharedPreferences.getString("login_address",null)!=null) {
-            login_email = sharedPreferences.getString("login_address",null);
+        }
+        if (sharedPreferences.getString("login_address", null) != null) {
+            login_email = sharedPreferences.getString("login_address", null);
             email = login_email;
 //            editTextScreenName.setText(login_email);
 
         }
-        Log.i(TAG, "i am here"+ email);
+        Log.i(TAG, "i am here" + email);
 
-         //queryRef = userDatabase.orderByChild("useremail");
+        //queryRef = userDatabase.orderByChild("useremail");
 
-        Log.i(TAG, "After Queryref"+queryRef);
+        Log.i(TAG, "After Queryref" + queryRef);
 
-
-        userDatabase.addChildEventListener(new ChildEventListener() {
-            //Log.e()
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//        userDatabase.child("user").
+          //  for (User u : userArrayList) {
 
 
-                value = dataSnapshot.getValue(User.class);
+                userDatabase.addChildEventListener(new ChildEventListener() {
+                    //Log.e()
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                if (value.getUseremail() == email)
-                {
-                   flagCreate = 1 ;
-                   // break;
-                }
+                        Log.i(TAG, "onChildAdded: inside onchild added");
+
+                        value = dataSnapshot.getValue(User.class);
+
+                        Log.i(TAG, "onChildAdded: value email = "+value.getUseremail());
+
+                        userArrayList.add(value);
+
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("list_user_size",userArrayList.size());
+                        editor.commit();
+
+                        Log.i(TAG, "onChildAdded: array list email at 0 = "+userArrayList.get(0).getUseremail());
+
+                        Log.i(TAG, "onChildAdded: size (inside database method)= "+userArrayList.size());
+
+                        Log.i(TAG, "value.getUseremail(): "+value.getUseremail());
+
+                        /*if (value.getUseremail().equals(email)) {
+                            flagCreate = 1;
+                            // break;
+                        }*/
 
 
-                Log.i(TAG, "onChildAdded1: "+value.getUseremail());
+                        Log.i(TAG, "onChildAdded1: " + value.getUseremail());
 
 
 //                userArrayList.add(value);
 
 
+                        //customBaseAdapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        Log.i(TAG, "onChildAdded2: " + value.getUseremail());
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        Log.i(TAG, "onChildAdded3: " + value.getUseremail());
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                        Log.i(TAG, "onChildAdded: " + value.getUseremail());
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.i(TAG, "onChildAdded4: " + value.getUseremail());
+
+                    }
+                });
+
+        Log.i(TAG, "onChildAdded: size (outside database method)= "+userArrayList.size());
 
 
 
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putInt("list_user_size",userArrayList.size());
+//        Set<User> set = new HashSet<User>();
+//        set.addAll(userArrayList);
+//        editor.putStringSet("set",set);
+//        editor.commit();
 
-                //customBaseAdapter.notifyDataSetChanged();
+//        Set<String> set = myScores.getStringSet("key", null);
+//
+////Set the values
+//        Set<String> set = new HashSet<String>();
+//        set.addAll(listOfExistingScores);
+//        scoreEditor.putStringSet("key", set);
+//        scoreEditor.commit();
 
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                Log.i(TAG, "onChildAdded2: "+value.getUseremail());
 
-            }
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("gmail_address",gmail);
+//        editor.commit();
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Log.i(TAG, "onChildAdded3: "+value.getUseremail());
 
-            }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                Log.i(TAG, "onChildAdded: "+value.getUseremail());
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.i(TAG, "onChildAdded4: "+value.getUseremail());
-
-            }
-        });
+                /**/
+//            }
 
         /*for (User uA:userArrayList
              ) {
@@ -156,15 +211,17 @@ public class HomePage extends AppCompatActivity {
 
         }*/
 
-        if (flagCreate == 0)
+        /*if (flagCreate == 0)
         {
            // Log.i(TAG, "onUsernewCreate: "+value.getUseremail());
 
             User user1 = new User("","",email,"","","");
+            userArrayList.add(user1);
+            Log.i(TAG, "userSize: "+userArrayList.size());
 
                     userDatabase.push().setValue(user1);
         }
-
+*/
 
         Log.i(TAG, "onCreate: latitude = "+sharedPreferences.getString("lat",null));
 

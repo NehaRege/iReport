@@ -60,6 +60,22 @@ public class User {
     public User() {
     }
 
+    public String getEmailConfirmation() {
+        return emailConfirmation;
+    }
+
+    public void setEmailConfirmation(String emailConfirmation) {
+        this.emailConfirmation = emailConfirmation;
+    }
+
+    public String getEmailNotification() {
+        return emailNotification;
+    }
+
+    public void setEmailNotification(String emailNotification) {
+        this.emailNotification = emailNotification;
+    }
+
     public String getAddress() {
         return address;
     }

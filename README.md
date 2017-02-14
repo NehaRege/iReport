@@ -19,35 +19,20 @@ iReport is an Android based application that allows people to report littering t
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.24.39%20PM.png)
 
 <h3> User Profile Settings Page </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.25.38%20PM.png)
-<br> </br>
 
 <h3> Image capture to report litter </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.26.57%20PM.png)
-<br> </br>
 
 <h3> Report littering screen </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.26.08%20PM.png)
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.07%20PM.png)
-<br> </br>
 
 <h3> Map View of all the reports </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screenshot_20170213-173235.png)
-<br> </br>
 
 <h3> Firebase console for database backend </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.34%20PM.png)  
-<br> </br>
 
 <h3> Firebase console for user authentication </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.34%20PM.png)  
-
-
-

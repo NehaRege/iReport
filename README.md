@@ -29,10 +29,12 @@ iReport is an Android based application that allows people to report littering t
 <br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screenshot_20170213-173235.png)
 <br> </br>
-<li> Firebase console for database backend </li>
+<h3> Firebase console for database backend </h3>
+<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.34%20PM.png)  
 <br> </br>
-<li> Firebase console for user authentication </li>
+<h3> Firebase console for user authentication </h3>
+<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.34%20PM.png)  
 
 

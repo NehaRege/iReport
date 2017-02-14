@@ -14,12 +14,9 @@ iReport is an Android based application that allows people to report littering t
 
 <h3> Login Screen </h3>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.22.40%20PM.png)
-<br> </br>
 
 <h3> Home Page </h3>
-<br> </br>
 ![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.24.39%20PM.png)
-<br> </br>
 
 <h3> User Profile Settings Page </h3>
 <br> </br>

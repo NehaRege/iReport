@@ -12,3 +12,22 @@ iReport is an Android based application that allows people to report littering t
 <li> Detailed information about the report containing a thumbnail image, date/time of report, and current status (still_there, removal_confirmed, or removal_claimed)</li>
 <li> Email notification to the resident upon status change.</li>
 </ul>
+
+<br> </br>
+
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.22.40%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.24.39%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.25.38%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.26.08%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.26.57%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.07%20PM.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screenshot_20170213-173235.png)
+<br> </br>
+![ScreenShot](https://github.com/NehaRege/iReport/blob/master/Screen%20Shot%202017-02-13%20at%207.27.34%20PM.png)  
+

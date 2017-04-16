@@ -2,7 +2,7 @@
 
 <h3>App Info</h3>
 
-iReport is an Android based application that allows people to report littering to the City Official and help fight inappropriate garbage disposition. It also gives city officials the capability to view the extent and severity of littering.
+iReport is an Android application that allows people to report littering in a city by taking pictures of inappropriate garbage disposal sites. The official is made aware of the report and once handled, a confirmation email is sent to the reporting individual.
 
 <h3>App Features and Technologies:</h3>
 <li> OAuth2 based authentication using Firebase for Facebook to identify the user as a resident and Gmail for City Official</li>
